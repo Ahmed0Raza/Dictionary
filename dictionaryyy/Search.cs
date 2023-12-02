@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,11 +12,18 @@ using static System.Windows.Forms.DataFormats;
 
 namespace Dictionary
 {
+    
     public partial class Search : Form
     {
+        protected static Trie passedDictionary;
         public Search()
         {
 
+            InitializeComponent();
+        }
+        public Search(Trie dict)
+        {
+            passedDictionary = dict;
             InitializeComponent();
         }
 
