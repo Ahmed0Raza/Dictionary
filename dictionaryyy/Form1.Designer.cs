@@ -33,6 +33,7 @@
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
+            textBoxLoad = new TextBox();
             SuspendLayout();
             // 
             // richTextBox1
@@ -81,7 +82,7 @@
             // 
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(157, 146);
+            button2.Location = new Point(149, 50);
             button2.Name = "button2";
             button2.Size = new Size(175, 64);
             button2.TabIndex = 3;
@@ -102,11 +103,20 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
+            // textBoxLoad
+            // 
+            textBoxLoad.Location = new Point(12, 135);
+            textBoxLoad.Name = "textBoxLoad";
+            textBoxLoad.Size = new Size(100, 23);
+            textBoxLoad.TabIndex = 5;
+            textBoxLoad.TextChanged += textBoxLoad_TextChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(476, 288);
+            Controls.Add(textBoxLoad);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -118,6 +128,7 @@
             Text = "Home";
             Load += Form1_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -127,5 +138,6 @@
         private Button button1;
         private Button button2;
         private Button button3;
+        private TextBox textBoxLoad;
     }
 }
