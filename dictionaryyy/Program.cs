@@ -269,7 +269,7 @@ namespace Dictionary
 
         static void Main()
         {
-            Trie shit;
+            Trie shi;
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
