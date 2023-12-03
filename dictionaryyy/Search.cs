@@ -61,26 +61,73 @@ namespace Dictionary
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
-                wordBox.Text =  string.Empty;
-                meaningBox.Text = string.Empty;
+            wordBox.Text = string.Empty;
+            meaningBox.Text = string.Empty;
 
-                string word;
-                string meaning;
-                word = SearchBox.Text;
-                meaning = null;
-                if (passedDictionary.Search(word, ref meaning))
-                {
-                    SearchBox.Text = string.Empty;
-                    wordBox.Text = word;
-                    meaningBox.Text = meaning;
-
-                }
-                else
-                {
+            string word;
+            string meaning;
+            word = SearchBox.Text;
+            meaning = null;
+            if (passedDictionary.Search(word, ref meaning))
+            {
                 SearchBox.Text = string.Empty;
+                wordBox.Text = word;
+                meaningBox.Text = meaning;
+
+            }
+            else
+            {
+                SearchBox.Text = string.Empty;
+            }
+
+
+        }
+
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+            string toAdd = addBox.Text;
+            string meaning = null;
+
+            if (passedDictionary.Search(toAdd, ref meaning))
+            {
+                MessageBox.Show("Word is already saved!");
+                newWord.Enabled = false;
+                addMeaning.Enabled = false;
+                addMeaningBtn.Enabled = false;
+            }
+            else
+            {
+                if (toAdd.Length > 0)
+                {
+                    newWord.Enabled = true;
+                    addMeaning.Enabled = true;
+                    addMeaningBtn.Enabled = true;
+                    newWord.Text = toAdd;
+                    addBox.Clear();
+
                 }
-            
-           
+
+            }
+        }
+
+        private void addMeaningBtn_Click(object sender, EventArgs e)
+        {
+            string Mean = addMeaning.Text;
+            string wordToAdd = newWord.Text;
+            passedDictionary.Insert(wordToAdd, Mean);
+            newWord.Enabled = false;
+            addMeaning.Enabled = false;
+            addMeaningBtn.Enabled = false;
+            newWord.Clear();
+            addMeaning.Clear();
+            MessageBox.Show("Inserted Successfully!");
+        }
+
+        private void Search_Load(object sender, EventArgs e)
+        {
+            newWord.Enabled = false;
+            addMeaning.Enabled = false;
+            addMeaningBtn.Enabled = false;
         }
     }
 }

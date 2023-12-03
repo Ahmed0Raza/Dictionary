@@ -46,8 +46,17 @@
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
+            addMeaningBtn = new Button();
+            addBtn = new Button();
+            addMeaning = new TextBox();
+            newWord = new TextBox();
+            addBox = new TextBox();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage5.SuspendLayout();
             SuspendLayout();
             // 
             // richTextBox1
@@ -241,12 +250,88 @@
             // 
             // tabPage5
             // 
+            tabPage5.Controls.Add(addMeaningBtn);
+            tabPage5.Controls.Add(addBtn);
+            tabPage5.Controls.Add(addMeaning);
+            tabPage5.Controls.Add(newWord);
+            tabPage5.Controls.Add(addBox);
+            tabPage5.Controls.Add(label6);
+            tabPage5.Controls.Add(label5);
+            tabPage5.Controls.Add(label4);
             tabPage5.Location = new Point(4, 24);
             tabPage5.Name = "tabPage5";
             tabPage5.Size = new Size(444, 136);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Add Word";
             tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // addMeaningBtn
+            // 
+            addMeaningBtn.Location = new Point(276, 103);
+            addMeaningBtn.Name = "addMeaningBtn";
+            addMeaningBtn.Size = new Size(75, 23);
+            addMeaningBtn.TabIndex = 7;
+            addMeaningBtn.Text = "Enter";
+            addMeaningBtn.UseVisualStyleBackColor = true;
+            addMeaningBtn.Click += addMeaningBtn_Click;
+            // 
+            // addBtn
+            // 
+            addBtn.Location = new Point(76, 66);
+            addBtn.Name = "addBtn";
+            addBtn.Size = new Size(75, 23);
+            addBtn.TabIndex = 6;
+            addBtn.Text = "Enter";
+            addBtn.UseVisualStyleBackColor = true;
+            addBtn.Click += addBtn_Click;
+            // 
+            // addMeaning
+            // 
+            addMeaning.Location = new Point(276, 74);
+            addMeaning.Name = "addMeaning";
+            addMeaning.Size = new Size(100, 23);
+            addMeaning.TabIndex = 5;
+            // 
+            // newWord
+            // 
+            newWord.Location = new Point(276, 32);
+            newWord.Name = "newWord";
+            newWord.Size = new Size(100, 23);
+            newWord.TabIndex = 4;
+            // 
+            // addBox
+            // 
+            addBox.Location = new Point(76, 32);
+            addBox.Name = "addBox";
+            addBox.Size = new Size(100, 23);
+            addBox.TabIndex = 3;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(222, 74);
+            label6.Name = "label6";
+            label6.Size = new Size(38, 15);
+            label6.TabIndex = 2;
+            label6.Text = "label6";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(222, 32);
+            label5.Name = "label5";
+            label5.Size = new Size(38, 15);
+            label5.TabIndex = 1;
+            label5.Text = "label5";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(32, 32);
+            label4.Name = "label4";
+            label4.Size = new Size(38, 15);
+            label4.TabIndex = 0;
+            label4.Text = "label4";
             // 
             // Search
             // 
@@ -263,9 +348,12 @@
             Name = "Search";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Search";
+            Load += Search_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            tabPage5.ResumeLayout(false);
+            tabPage5.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -289,5 +377,13 @@
         private TextBox meaningBox;
         private Label label3;
         private TextBox wordBox;
+        private Button addMeaningBtn;
+        private Button addBtn;
+        private TextBox addMeaning;
+        private TextBox newWord;
+        private TextBox addBox;
+        private Label label6;
+        private Label label5;
+        private Label label4;
     }
 }
