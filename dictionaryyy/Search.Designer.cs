@@ -207,7 +207,7 @@
             // 
             SearchBox.Location = new Point(78, 23);
             SearchBox.Name = "SearchBox";
-            SearchBox.Size = new Size(100, 23);
+            SearchBox.Size = new Size(101, 23);
             SearchBox.TabIndex = 8;
             SearchBox.TextChanged += MeaningBox_TextChanged;
             // 
