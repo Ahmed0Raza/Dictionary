@@ -107,5 +107,67 @@ namespace Dictionary
             }
             deleteBox.Text = string.Empty;
         }
+
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+            string toAdd = addBox.Text;
+            string meaning = null;
+
+            if (passedDictionary.Search(toAdd, ref meaning))
+            {
+                MessageBox.Show("Word is already saved!");
+                newWord.Enabled = false;
+                addMeaning.Enabled = false;
+                addMeaningBtn.Enabled = false;
+            }
+            else
+            {
+                if (toAdd.Length > 0)
+                {
+                    newWord.Enabled = true;
+                    addMeaning.Enabled = true;
+                    addMeaningBtn.Enabled = true;
+                    newWord.Text = toAdd;
+                    addBox.Clear();
+
+                }
+
+            }
+        }
+
+        private void addBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newWord_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addMeaningBtn_Click(object sender, EventArgs e)
+        {
+            string Mean = addMeaning.Text;
+            string wordToAdd = newWord.Text;
+            passedDictionary.Insert(wordToAdd, Mean);
+            newWord.Enabled = false;
+            addMeaning.Enabled = false;
+            addMeaningBtn.Enabled = false;
+            newWord.Clear();
+            addMeaning.Clear();
+            MessageBox.Show("Inserted Successfully!");
+        }
+
+        private void Search_Load(object sender, EventArgs e)
+        {
+            newWord.Enabled = false;
+            addMeaning.Enabled = false;
+            addMeaningBtn.Enabled = false;
+        }
+
+        private void addMeaning_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

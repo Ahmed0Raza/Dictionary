@@ -49,9 +49,18 @@
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
+            addMeaningBtn = new Button();
+            label7 = new Label();
+            label6 = new Label();
+            newWord = new TextBox();
+            addMeaning = new TextBox();
+            addBtn = new Button();
+            addBox = new TextBox();
+            label5 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
+            tabPage5.SuspendLayout();
             SuspendLayout();
             // 
             // richTextBox1
@@ -296,6 +305,14 @@
             // 
             // tabPage5
             // 
+            tabPage5.Controls.Add(addMeaningBtn);
+            tabPage5.Controls.Add(label7);
+            tabPage5.Controls.Add(label6);
+            tabPage5.Controls.Add(newWord);
+            tabPage5.Controls.Add(addMeaning);
+            tabPage5.Controls.Add(addBtn);
+            tabPage5.Controls.Add(addBox);
+            tabPage5.Controls.Add(label5);
             tabPage5.Location = new Point(4, 34);
             tabPage5.Margin = new Padding(4, 5, 4, 5);
             tabPage5.Name = "tabPage5";
@@ -303,6 +320,84 @@
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Add Word";
             tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // addMeaningBtn
+            // 
+            addMeaningBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            addMeaningBtn.Location = new Point(438, 114);
+            addMeaningBtn.Name = "addMeaningBtn";
+            addMeaningBtn.Size = new Size(112, 33);
+            addMeaningBtn.TabIndex = 7;
+            addMeaningBtn.Text = "Enter";
+            addMeaningBtn.UseVisualStyleBackColor = true;
+            addMeaningBtn.Click += addMeaningBtn_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(351, 80);
+            label7.Name = "label7";
+            label7.Size = new Size(87, 25);
+            label7.TabIndex = 6;
+            label7.Text = "Meaning";
+            // 
+            // label6
+            // 
+            label6.AutoEllipsis = true;
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(373, 32);
+            label6.Name = "label6";
+            label6.Size = new Size(59, 25);
+            label6.TabIndex = 5;
+            label6.Text = "Word";
+            // 
+            // newWord
+            // 
+            newWord.Location = new Point(438, 29);
+            newWord.Name = "newWord";
+            newWord.Size = new Size(150, 31);
+            newWord.TabIndex = 4;
+            newWord.TextChanged += newWord_TextChanged;
+            // 
+            // addMeaning
+            // 
+            addMeaning.Location = new Point(438, 79);
+            addMeaning.Name = "addMeaning";
+            addMeaning.Size = new Size(150, 31);
+            addMeaning.TabIndex = 3;
+            addMeaning.TextChanged += addMeaning_TextChanged;
+            // 
+            // addBtn
+            // 
+            addBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            addBtn.Location = new Point(96, 63);
+            addBtn.Name = "addBtn";
+            addBtn.Size = new Size(112, 34);
+            addBtn.TabIndex = 2;
+            addBtn.Text = "Enter";
+            addBtn.UseVisualStyleBackColor = true;
+            addBtn.Click += addBtn_Click;
+            // 
+            // addBox
+            // 
+            addBox.Location = new Point(96, 29);
+            addBox.Multiline = true;
+            addBox.Name = "addBox";
+            addBox.Size = new Size(157, 28);
+            addBox.TabIndex = 1;
+            addBox.TextChanged += addBox_TextChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(28, 29);
+            label5.Name = "label5";
+            label5.Size = new Size(63, 28);
+            label5.TabIndex = 0;
+            label5.Text = "Word";
             // 
             // Search
             // 
@@ -320,11 +415,14 @@
             Name = "Search";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Search";
+            Load += Search_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            tabPage5.ResumeLayout(false);
+            tabPage5.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -351,5 +449,13 @@
         private TextBox deleteBox;
         private Label label4;
         private Button deleteBtn;
+        private Label label5;
+        private Button addBtn;
+        private TextBox addBox;
+        private TextBox addMeaning;
+        private Label label7;
+        private Label label6;
+        private TextBox newWord;
+        private Button addMeaningBtn;
     }
 }
