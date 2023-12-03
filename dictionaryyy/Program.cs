@@ -162,20 +162,22 @@ namespace Dictionary
 
     class TrieNode
     {
-        public Map<char, TrieNode> Children { get; set; }
+        public Dictionary<char, TrieNode> Children { get; set; }
         public bool IsEndOfWord { get; set; }
 
-        public string meaning { get; set; }
+        public string Meaning { get; set; }
+
         public TrieNode()
         {
-            Children = new Map<char, TrieNode>();
+            Children = new Dictionary<char, TrieNode>();
             IsEndOfWord = false;
+            Meaning = null;
         }
     }
 
     public class Trie
     {
-        TrieNode root;
+        private TrieNode root;
 
         public Trie()
         {
@@ -186,53 +188,64 @@ namespace Dictionary
         {
             TrieNode node = root;
             TrieNode outNode = null;
+
             foreach (char ch in word)
             {
-                if (!node.Children.Find(ch, out outNode))
+                if (!node.Children.TryGetValue(ch, out outNode))
                 {
-                    node.Children.Insert(ch, new TrieNode());
-
+                    node.Children[ch] = new TrieNode();
                 }
-                node.Children.Find(ch, out node);
 
-
+                node = node.Children[ch];
             }
+
             node.IsEndOfWord = true;
-            node.meaning = meaning;
+            node.Meaning = meaning;
         }
 
-        public bool Search(string word)
+        public bool Search(string word, ref string meaning)
         {
             TrieNode outNode = null;
             TrieNode node = root;
+
             foreach (char ch in word)
             {
-                if (!node.Children.Find(ch, out outNode))
+                if (!node.Children.TryGetValue(ch, out outNode))
                 {
                     return false;
                 }
-                node = outNode;
 
+                node = outNode;
             }
-            return node.IsEndOfWord;
+
+            if (node.IsEndOfWord)
+            {
+                meaning = node.Meaning;
+                return true;
+            }
+
+            return false;
         }
 
         public bool StartsWith(string prefix)
         {
             TrieNode node = root;
             TrieNode outNode = null;
+
             foreach (char ch in prefix)
             {
-                if (!node.Children.Find(ch, out outNode))
+                if (!node.Children.TryGetValue(ch, out outNode))
                 {
                     return false;
                 }
+
                 node = outNode;
             }
+
             return true;
         }
-    
-    public void Load(string filename)
+
+        public void Load(string filename)
         {
             try
             {
@@ -254,12 +267,12 @@ namespace Dictionary
             }
             catch (Exception ex)
             {
-               
                 MessageBox.Show("Error reading file: " + ex.Message);
                 Console.WriteLine("Error reading file: " + ex.Message);
             }
         }
     }
+
     internal static class Program
     {
         /// <summary>

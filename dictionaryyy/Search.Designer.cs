@@ -35,7 +35,13 @@
             button6 = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            MeaningBox = new TextBox();
+            meaningBox = new TextBox();
+            label3 = new Label();
+            wordBox = new TextBox();
+            label2 = new Label();
+            label1 = new Label();
+            SearchBtn = new Button();
+            SearchBox = new TextBox();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
@@ -126,7 +132,13 @@
             // 
             // tabPage1
             // 
-            tabPage1.Controls.Add(MeaningBox);
+            tabPage1.Controls.Add(meaningBox);
+            tabPage1.Controls.Add(label3);
+            tabPage1.Controls.Add(wordBox);
+            tabPage1.Controls.Add(label2);
+            tabPage1.Controls.Add(label1);
+            tabPage1.Controls.Add(SearchBtn);
+            tabPage1.Controls.Add(SearchBox);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -136,13 +148,68 @@
             tabPage1.UseVisualStyleBackColor = true;
             tabPage1.Click += tabPage1_Click;
             // 
-            // MeaningBox
+            // meaningBox
             // 
-            MeaningBox.Location = new Point(37, 74);
-            MeaningBox.Name = "MeaningBox";
-            MeaningBox.Size = new Size(100, 23);
-            MeaningBox.TabIndex = 8;
-            MeaningBox.TextChanged += MeaningBox_TextChanged;
+            meaningBox.Location = new Point(289, 71);
+            meaningBox.Name = "meaningBox";
+            meaningBox.Size = new Size(100, 23);
+            meaningBox.TabIndex = 14;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(220, 74);
+            label3.Name = "label3";
+            label3.Size = new Size(55, 15);
+            label3.TabIndex = 13;
+            label3.Text = "Meaning";
+            // 
+            // wordBox
+            // 
+            wordBox.Location = new Point(289, 23);
+            wordBox.Name = "wordBox";
+            wordBox.Size = new Size(100, 23);
+            wordBox.TabIndex = 12;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(229, 26);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 11;
+            label2.Text = "Word";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(17, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(45, 15);
+            label1.TabIndex = 10;
+            label1.Text = "Search";
+            // 
+            // SearchBtn
+            // 
+            SearchBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SearchBtn.Location = new Point(78, 52);
+            SearchBtn.Name = "SearchBtn";
+            SearchBtn.Size = new Size(75, 23);
+            SearchBtn.TabIndex = 9;
+            SearchBtn.Text = "Search";
+            SearchBtn.UseVisualStyleBackColor = true;
+            SearchBtn.Click += SearchBtn_Click;
+            // 
+            // SearchBox
+            // 
+            SearchBox.Location = new Point(78, 23);
+            SearchBox.Name = "SearchBox";
+            SearchBox.Size = new Size(101, 23);
+            SearchBox.TabIndex = 8;
+            SearchBox.TextChanged += MeaningBox_TextChanged;
             // 
             // tabPage2
             // 
@@ -215,6 +282,12 @@
         private TabPage tabPage3;
         private TabPage tabPage4;
         private TabPage tabPage5;
-        private TextBox MeaningBox;
+        private TextBox SearchBox;
+        private Label label1;
+        private Button SearchBtn;
+        private Label label2;
+        private TextBox meaningBox;
+        private Label label3;
+        private TextBox wordBox;
     }
 }
