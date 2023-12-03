@@ -34,6 +34,7 @@
             button2 = new Button();
             button3 = new Button();
             textBoxLoad = new TextBox();
+            label1 = new Label();
             SuspendLayout();
             // 
             // richTextBox1
@@ -110,19 +111,35 @@
             // 
             // textBoxLoad
             // 
-            textBoxLoad.BackColor = SystemColors.InactiveCaptionText;
-            textBoxLoad.Location = new Point(262, 235);
+            textBoxLoad.BackColor = SystemColors.ControlLightLight;
+            textBoxLoad.BorderStyle = BorderStyle.None;
+            textBoxLoad.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBoxLoad.ForeColor = Color.DimGray;
+            textBoxLoad.Location = new Point(178, 259);
             textBoxLoad.Margin = new Padding(4, 5, 4, 5);
+            textBoxLoad.Multiline = true;
             textBoxLoad.Name = "textBoxLoad";
-            textBoxLoad.Size = new Size(141, 31);
+            textBoxLoad.Size = new Size(316, 28);
             textBoxLoad.TabIndex = 5;
             textBoxLoad.TextChanged += textBoxLoad_TextChanged;
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Trebuchet MS", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(64, 64, 64);
+            label1.Location = new Point(178, 231);
+            label1.Name = "label1";
+            label1.Size = new Size(79, 23);
+            label1.TabIndex = 6;
+            label1.Text = "Status";
+            label1.Click += label1_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(680, 480);
+            Controls.Add(label1);
             Controls.Add(textBoxLoad);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -147,5 +164,6 @@
         private Button button2;
         private Button button3;
         private TextBox textBoxLoad;
+        private Label label1;
     }
 }
