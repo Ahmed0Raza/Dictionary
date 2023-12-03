@@ -226,6 +226,31 @@ namespace Dictionary
 
             return false;
         }
+        public bool Delete(string word)
+        {
+            TrieNode node = root;
+            TrieNode outNode = null;
+
+            foreach (char ch in word)
+            {
+                if (!node.Children.TryGetValue(ch, out outNode))
+                {
+                    // Word not found in the Trie, nothing to delete
+                    return false;
+                }
+
+                node = outNode;
+            }
+
+            // If the word is present in the Trie, mark it as not the end of the word and clear the meaning
+            if (node.IsEndOfWord)
+            {
+                node.IsEndOfWord = false;
+                node.Meaning = null;
+            }
+            return true;
+        }
+
 
         public bool StartsWith(string prefix)
         {

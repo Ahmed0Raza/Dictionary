@@ -77,6 +77,7 @@ namespace Dictionary
             }
             else
             {
+                MessageBox.Show("Word not found!");
                 SearchBox.Text = string.Empty;
             }
 
@@ -86,6 +87,25 @@ namespace Dictionary
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void deleteBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            string toDelete = deleteBox.Text;
+            if (!passedDictionary.Delete(toDelete))
+            {
+                MessageBox.Show("Word not found!");
+            }
+            else
+            {
+                MessageBox.Show("Deleted Succesfully!");
+            }
+            deleteBox.Text = string.Empty;
         }
     }
 }
