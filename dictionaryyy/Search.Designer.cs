@@ -51,9 +51,9 @@
             addMeaning = new TextBox();
             newWord = new TextBox();
             addBox = new TextBox();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
+            label3000 = new Label();
+            label2000 = new Label();
+            label1000 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage5.SuspendLayout();
@@ -255,9 +255,9 @@
             tabPage5.Controls.Add(addMeaning);
             tabPage5.Controls.Add(newWord);
             tabPage5.Controls.Add(addBox);
-            tabPage5.Controls.Add(label6);
-            tabPage5.Controls.Add(label5);
-            tabPage5.Controls.Add(label4);
+            tabPage5.Controls.Add(label3000);
+            tabPage5.Controls.Add(label2000);
+            tabPage5.Controls.Add(label1000);
             tabPage5.Location = new Point(4, 24);
             tabPage5.Name = "tabPage5";
             tabPage5.Size = new Size(444, 136);
@@ -298,6 +298,7 @@
             newWord.Name = "newWord";
             newWord.Size = new Size(100, 23);
             newWord.TabIndex = 4;
+            newWord.TextChanged += newWord_TextChanged;
             // 
             // addBox
             // 
@@ -305,33 +306,34 @@
             addBox.Name = "addBox";
             addBox.Size = new Size(100, 23);
             addBox.TabIndex = 3;
+            addBox.TextChanged += addBox_TextChanged;
             // 
-            // label6
+            // label3000
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(222, 74);
-            label6.Name = "label6";
-            label6.Size = new Size(38, 15);
-            label6.TabIndex = 2;
-            label6.Text = "label6";
+            label3000.AutoSize = true;
+            label3000.Location = new Point(222, 74);
+            label3000.Name = "label3000";
+            label3000.Size = new Size(38, 15);
+            label3000.TabIndex = 2;
+            label3000.Text = "label6";
             // 
-            // label5
+            // label2000
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(222, 32);
-            label5.Name = "label5";
-            label5.Size = new Size(38, 15);
-            label5.TabIndex = 1;
-            label5.Text = "label5";
+            label2000.AutoSize = true;
+            label2000.Location = new Point(222, 32);
+            label2000.Name = "label2000";
+            label2000.Size = new Size(38, 15);
+            label2000.TabIndex = 1;
+            label2000.Text = "label5";
             // 
-            // label4
+            // label1000
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(32, 32);
-            label4.Name = "label4";
-            label4.Size = new Size(38, 15);
-            label4.TabIndex = 0;
-            label4.Text = "label4";
+            label1000.AutoSize = true;
+            label1000.Location = new Point(32, 32);
+            label1000.Name = "label1000";
+            label1000.Size = new Size(38, 15);
+            label1000.TabIndex = 0;
+            label1000.Text = "label4";
             // 
             // Search
             // 
@@ -382,8 +384,8 @@
         private TextBox addMeaning;
         private TextBox newWord;
         private TextBox addBox;
-        private Label label6;
-        private Label label5;
-        private Label label4;
+        private Label label3000;
+        private Label label2000;
+        private Label label1000;
     }
 }

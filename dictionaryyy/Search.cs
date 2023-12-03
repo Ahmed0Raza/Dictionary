@@ -131,5 +131,15 @@ namespace Dictionary
             addMeaningBtn.Enabled = false;
 
         }
+
+        private void addBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newWord_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
