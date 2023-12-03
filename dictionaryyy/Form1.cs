@@ -5,6 +5,8 @@ namespace Dictionary
         Trie dictionary = new Trie();
         //abcdeefghkdf
         Trie abc;
+
+        Trie tryhard;
         public Form1()
         {
 
