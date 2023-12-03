@@ -43,12 +43,12 @@
             SearchBtn = new Button();
             SearchBox = new TextBox();
             tabPage2 = new TabPage();
+            deleteBtn = new Button();
+            deleteBox = new TextBox();
+            label4 = new Label();
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
-            label4 = new Label();
-            deleteBox = new TextBox();
-            deleteBtn = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -243,6 +243,37 @@
             tabPage2.Text = "Delete";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // deleteBtn
+            // 
+            deleteBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            deleteBtn.Location = new Point(99, 66);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(112, 39);
+            deleteBtn.TabIndex = 2;
+            deleteBtn.Text = "Delete";
+            deleteBtn.UseVisualStyleBackColor = true;
+            deleteBtn.Click += deleteBtn_Click;
+            // 
+            // deleteBox
+            // 
+            deleteBox.Location = new Point(99, 29);
+            deleteBox.Multiline = true;
+            deleteBox.Name = "deleteBox";
+            deleteBox.Size = new Size(280, 31);
+            deleteBox.TabIndex = 1;
+            deleteBox.TextChanged += deleteBox_TextChanged;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(37, 29);
+            label4.Name = "label4";
+            label4.Size = new Size(56, 25);
+            label4.TabIndex = 0;
+            label4.Text = "Enter";
+            label4.Click += label4_Click;
+            // 
             // tabPage3
             // 
             tabPage3.Location = new Point(4, 34);
@@ -272,35 +303,6 @@
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Add Word";
             tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(37, 29);
-            label4.Name = "label4";
-            label4.Size = new Size(56, 25);
-            label4.TabIndex = 0;
-            label4.Text = "Enter";
-            label4.Click += label4_Click;
-            // 
-            // deleteBox
-            // 
-            deleteBox.Location = new Point(99, 29);
-            deleteBox.Multiline = true;
-            deleteBox.Name = "deleteBox";
-            deleteBox.Size = new Size(280, 31);
-            deleteBox.TabIndex = 1;
-            // 
-            // deleteBtn
-            // 
-            deleteBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            deleteBtn.Location = new Point(99, 66);
-            deleteBtn.Name = "deleteBtn";
-            deleteBtn.Size = new Size(112, 39);
-            deleteBtn.TabIndex = 2;
-            deleteBtn.Text = "Delete";
-            deleteBtn.UseVisualStyleBackColor = true;
             // 
             // Search
             // 
