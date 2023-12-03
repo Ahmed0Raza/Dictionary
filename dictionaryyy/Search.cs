@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Security.Policy;
@@ -106,6 +107,52 @@ namespace Dictionary
                 MessageBox.Show("Deleted Succesfully!");
             }
             deleteBox.Text = string.Empty;
+        }
+
+        private void updateBtn_Click(object sender, EventArgs e)
+        {
+            string word = updateBox.Text;
+            string meaning = null;
+            if (!passedDictionary.Search(word, ref meaning))
+            {
+                updateBox.Text = string.Empty;
+                MessageBox.Show("Word not found!");
+                toUpdateWord.Enabled = false;
+                updatedMeaning.Enabled = false;
+            }
+            else
+            {
+                toUpdateWord.Enabled = true;
+                updatedMeaning.Enabled = true;
+                updateBox.Text = string.Empty;
+                MessageBox.Show("Word found, Please enter the updated meaning of word in below box.");
+                toUpdateWord.Text = word;
+
+            }
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updatingBtn_Click(object sender, EventArgs e)
+        {
+            string word = toUpdateWord.Text;
+            string meaning;
+            meaning = updatedMeaning.Text;
+            passedDictionary.Insert(word, meaning);
+            MessageBox.Show("Meaning Updated!");
+            toUpdateWord.Text = string.Empty;
+            updatedMeaning.Text = string.Empty;
+
+        }
+
+        private void Search_Load(object sender, EventArgs e)
+        {
+            toUpdateWord.Enabled = false;
+            updatedMeaning.Enabled = false;
         }
     }
 }
