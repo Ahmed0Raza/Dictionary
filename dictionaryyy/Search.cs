@@ -127,7 +127,9 @@ namespace Dictionary
         {
             newWord.Enabled = false;
             addMeaning.Enabled = false;
+
             addMeaningBtn.Enabled = false;
+
         }
     }
 }
