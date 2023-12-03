@@ -247,7 +247,7 @@
             updateBox.Location = new Point(94, 42);
             updateBox.Multiline = true;
             updateBox.Name = "updateBox";
-            updateBox.Size = new Size(275, 32);
+            updateBox.Size = new Size(276, 32);
             updateBox.TabIndex = 5;
             updateBox.TextChanged += textBox3_TextChanged;
             // 
