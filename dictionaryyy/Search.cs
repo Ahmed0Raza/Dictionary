@@ -61,26 +61,31 @@ namespace Dictionary
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
-                wordBox.Text =  string.Empty;
-                meaningBox.Text = string.Empty;
+            wordBox.Text = string.Empty;
+            meaningBox.Text = string.Empty;
 
-                string word;
-                string meaning;
-                word = SearchBox.Text;
-                meaning = null;
-                if (passedDictionary.Search(word, ref meaning))
-                {
-                    SearchBox.Text = string.Empty;
-                    wordBox.Text = word;
-                    meaningBox.Text = meaning;
-
-                }
-                else
-                {
+            string word;
+            string meaning;
+            word = SearchBox.Text;
+            meaning = null;
+            if (passedDictionary.Search(word, ref meaning))
+            {
                 SearchBox.Text = string.Empty;
-                }
-            
-           
+                wordBox.Text = word;
+                meaningBox.Text = meaning;
+
+            }
+            else
+            {
+                SearchBox.Text = string.Empty;
+            }
+
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
