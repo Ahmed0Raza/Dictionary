@@ -46,8 +46,12 @@
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
+            label4 = new Label();
+            deleteBox = new TextBox();
+            deleteBtn = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // richTextBox1
@@ -57,9 +61,10 @@
             richTextBox1.Font = new Font("Times New Roman", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             richTextBox1.ForeColor = Color.Teal;
             richTextBox1.Location = new Point(0, 0);
+            richTextBox1.Margin = new Padding(4, 5, 4, 5);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
-            richTextBox1.Size = new Size(476, 53);
+            richTextBox1.Size = new Size(678, 86);
             richTextBox1.TabIndex = 1;
             richTextBox1.TabStop = false;
             richTextBox1.Text = "                     Welcome to Your Dictionary";
@@ -72,11 +77,12 @@
             richTextBox2.Cursor = Cursors.Hand;
             richTextBox2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             richTextBox2.ForeColor = SystemColors.Info;
-            richTextBox2.Location = new Point(12, 24);
+            richTextBox2.Location = new Point(17, 40);
+            richTextBox2.Margin = new Padding(4, 5, 4, 5);
             richTextBox2.Name = "richTextBox2";
             richTextBox2.ReadOnly = true;
             richTextBox2.ScrollBars = RichTextBoxScrollBars.None;
-            richTextBox2.Size = new Size(452, 20);
+            richTextBox2.Size = new Size(646, 33);
             richTextBox2.TabIndex = 2;
             richTextBox2.TabStop = false;
             richTextBox2.Text = "             Explore words with ease in our app's handy dictionary!";
@@ -85,9 +91,10 @@
             // 
             button4.FlatStyle = FlatStyle.Flat;
             button4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.Location = new Point(2, 50);
+            button4.Location = new Point(3, 83);
+            button4.Margin = new Padding(4, 5, 4, 5);
             button4.Name = "button4";
-            button4.Size = new Size(151, 64);
+            button4.Size = new Size(216, 107);
             button4.TabIndex = 3;
             button4.Text = "Home";
             button4.UseVisualStyleBackColor = true;
@@ -97,9 +104,10 @@
             // 
             button5.FlatStyle = FlatStyle.Flat;
             button5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.Location = new Point(149, 50);
+            button5.Location = new Point(213, 83);
+            button5.Margin = new Padding(4, 5, 4, 5);
             button5.Name = "button5";
-            button5.Size = new Size(175, 64);
+            button5.Size = new Size(250, 107);
             button5.TabIndex = 4;
             button5.Text = "Search";
             button5.UseVisualStyleBackColor = true;
@@ -109,9 +117,10 @@
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button6.ForeColor = SystemColors.ActiveCaptionText;
-            button6.Location = new Point(321, 50);
+            button6.Location = new Point(459, 83);
+            button6.Margin = new Padding(4, 5, 4, 5);
             button6.Name = "button6";
-            button6.Size = new Size(153, 64);
+            button6.Size = new Size(219, 107);
             button6.TabIndex = 5;
             button6.Text = "About";
             button6.UseVisualStyleBackColor = true;
@@ -124,10 +133,11 @@
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
-            tabControl1.Location = new Point(12, 120);
+            tabControl1.Location = new Point(17, 200);
+            tabControl1.Margin = new Padding(4, 5, 4, 5);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(452, 164);
+            tabControl1.Size = new Size(646, 273);
             tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -139,10 +149,11 @@
             tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(SearchBtn);
             tabPage1.Controls.Add(SearchBox);
-            tabPage1.Location = new Point(4, 24);
+            tabPage1.Location = new Point(4, 34);
+            tabPage1.Margin = new Padding(4, 5, 4, 5);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(444, 136);
+            tabPage1.Padding = new Padding(4, 5, 4, 5);
+            tabPage1.Size = new Size(638, 235);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Search";
             tabPage1.UseVisualStyleBackColor = true;
@@ -150,35 +161,39 @@
             // 
             // meaningBox
             // 
-            meaningBox.Location = new Point(289, 71);
+            meaningBox.Location = new Point(413, 118);
+            meaningBox.Margin = new Padding(4, 5, 4, 5);
             meaningBox.Name = "meaningBox";
-            meaningBox.Size = new Size(100, 23);
+            meaningBox.Size = new Size(141, 31);
             meaningBox.TabIndex = 14;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(220, 74);
+            label3.Location = new Point(314, 123);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(55, 15);
+            label3.Size = new Size(87, 25);
             label3.TabIndex = 13;
             label3.Text = "Meaning";
             // 
             // wordBox
             // 
-            wordBox.Location = new Point(289, 23);
+            wordBox.Location = new Point(413, 38);
+            wordBox.Margin = new Padding(4, 5, 4, 5);
             wordBox.Name = "wordBox";
-            wordBox.Size = new Size(100, 23);
+            wordBox.Size = new Size(141, 31);
             wordBox.TabIndex = 12;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(229, 26);
+            label2.Location = new Point(327, 43);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(59, 25);
             label2.TabIndex = 11;
             label2.Text = "Word";
             // 
@@ -186,18 +201,20 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(17, 26);
+            label1.Location = new Point(24, 43);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(45, 15);
+            label1.Size = new Size(57, 25);
             label1.TabIndex = 10;
-            label1.Text = "Search";
+            label1.Text = "Enter";
             // 
             // SearchBtn
             // 
-            SearchBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SearchBtn.Location = new Point(78, 52);
+            SearchBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SearchBtn.Location = new Point(111, 87);
+            SearchBtn.Margin = new Padding(4, 5, 4, 5);
             SearchBtn.Name = "SearchBtn";
-            SearchBtn.Size = new Size(75, 23);
+            SearchBtn.Size = new Size(107, 38);
             SearchBtn.TabIndex = 9;
             SearchBtn.Text = "Search";
             SearchBtn.UseVisualStyleBackColor = true;
@@ -205,60 +222,98 @@
             // 
             // SearchBox
             // 
-            SearchBox.Location = new Point(78, 23);
+            SearchBox.Location = new Point(111, 38);
+            SearchBox.Margin = new Padding(4, 5, 4, 5);
             SearchBox.Name = "SearchBox";
-            SearchBox.Size = new Size(101, 23);
+            SearchBox.Size = new Size(143, 31);
             SearchBox.TabIndex = 8;
             SearchBox.TextChanged += MeaningBox_TextChanged;
             // 
             // tabPage2
             // 
-            tabPage2.Location = new Point(4, 24);
+            tabPage2.Controls.Add(deleteBtn);
+            tabPage2.Controls.Add(deleteBox);
+            tabPage2.Controls.Add(label4);
+            tabPage2.Location = new Point(4, 34);
+            tabPage2.Margin = new Padding(4, 5, 4, 5);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(444, 136);
+            tabPage2.Padding = new Padding(4, 5, 4, 5);
+            tabPage2.Size = new Size(638, 235);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Delete";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
-            tabPage3.Location = new Point(4, 24);
+            tabPage3.Location = new Point(4, 34);
+            tabPage3.Margin = new Padding(4, 5, 4, 5);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(444, 136);
+            tabPage3.Size = new Size(638, 235);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Update";
             tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
-            tabPage4.Location = new Point(4, 24);
+            tabPage4.Location = new Point(4, 34);
+            tabPage4.Margin = new Padding(4, 5, 4, 5);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(444, 136);
+            tabPage4.Size = new Size(638, 235);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Suggestions";
             tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage5
             // 
-            tabPage5.Location = new Point(4, 24);
+            tabPage5.Location = new Point(4, 34);
+            tabPage5.Margin = new Padding(4, 5, 4, 5);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(444, 136);
+            tabPage5.Size = new Size(638, 235);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Add Word";
             tabPage5.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(37, 29);
+            label4.Name = "label4";
+            label4.Size = new Size(56, 25);
+            label4.TabIndex = 0;
+            label4.Text = "Enter";
+            label4.Click += label4_Click;
+            // 
+            // deleteBox
+            // 
+            deleteBox.Location = new Point(99, 29);
+            deleteBox.Multiline = true;
+            deleteBox.Name = "deleteBox";
+            deleteBox.Size = new Size(280, 31);
+            deleteBox.TabIndex = 1;
+            // 
+            // deleteBtn
+            // 
+            deleteBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            deleteBtn.Location = new Point(99, 66);
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new Size(112, 39);
+            deleteBtn.TabIndex = 2;
+            deleteBtn.Text = "Delete";
+            deleteBtn.UseVisualStyleBackColor = true;
+            // 
             // Search
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(476, 288);
+            ClientSize = new Size(680, 480);
             Controls.Add(tabControl1);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(richTextBox2);
             Controls.Add(richTextBox1);
+            Margin = new Padding(4, 5, 4, 5);
             MaximizeBox = false;
             Name = "Search";
             StartPosition = FormStartPosition.CenterScreen;
@@ -266,6 +321,8 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -289,5 +346,8 @@
         private TextBox meaningBox;
         private Label label3;
         private TextBox wordBox;
+        private TextBox deleteBox;
+        private Label label4;
+        private Button deleteBtn;
     }
 }
