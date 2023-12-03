@@ -3,6 +3,7 @@ namespace Dictionary
     public partial class Form1 : Form
     {
         Trie dictionary = new Trie();
+        //abcd
         public Form1()
         {
 
@@ -14,6 +15,7 @@ namespace Dictionary
             // Load data from file into the Trie
             dictionary.Load("dictionary.txt");
             textBoxLoad.Text = "Dictionary loaded successfully!";
+
         }
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
