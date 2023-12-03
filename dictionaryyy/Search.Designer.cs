@@ -38,19 +38,11 @@
             MeaningBox = new TextBox();
             textBoxInput = new TextBox();
             tabPage2 = new TabPage();
-            label1 = new Label();
-            DeleteBtn = new Button();
-            deleteBox = new TextBox();
             tabPage3 = new TabPage();
-            button2 = new Button();
-            updateBox = new TextBox();
-            label3 = new Label();
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
-            tabPage2.SuspendLayout();
-            tabPage3.SuspendLayout();
             SuspendLayout();
             // 
             // richTextBox1
@@ -132,7 +124,7 @@
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
-            tabControl1.Location = new Point(17, 200);
+            tabControl1.Location = new Point(17, 201);
             tabControl1.Margin = new Padding(4, 5, 4, 5);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
@@ -173,9 +165,6 @@
             // 
             // tabPage2
             // 
-            tabPage2.Controls.Add(label1);
-            tabPage2.Controls.Add(DeleteBtn);
-            tabPage2.Controls.Add(deleteBox);
             tabPage2.Location = new Point(4, 34);
             tabPage2.Margin = new Padding(4, 5, 4, 5);
             tabPage2.Name = "tabPage2";
@@ -185,43 +174,8 @@
             tabPage2.Text = "Delete";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(21, 44);
-            label1.Name = "label1";
-            label1.Size = new Size(56, 25);
-            label1.TabIndex = 3;
-            label1.Text = "Enter";
-            label1.Click += label1_Click;
-            // 
-            // DeleteBtn
-            // 
-            DeleteBtn.BackColor = SystemColors.ButtonFace;
-            DeleteBtn.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            DeleteBtn.Location = new Point(92, 79);
-            DeleteBtn.Name = "DeleteBtn";
-            DeleteBtn.Size = new Size(106, 30);
-            DeleteBtn.TabIndex = 2;
-            DeleteBtn.Text = "Delete";
-            DeleteBtn.UseVisualStyleBackColor = false;
-            DeleteBtn.Click += button1_Click_1;
-            // 
-            // deleteBox
-            // 
-            deleteBox.Location = new Point(92, 41);
-            deleteBox.Multiline = true;
-            deleteBox.Name = "deleteBox";
-            deleteBox.Size = new Size(275, 32);
-            deleteBox.TabIndex = 1;
-            deleteBox.TextChanged += textBox1_TextChanged;
-            // 
             // tabPage3
             // 
-            tabPage3.Controls.Add(button2);
-            tabPage3.Controls.Add(updateBox);
-            tabPage3.Controls.Add(label3);
             tabPage3.Location = new Point(4, 34);
             tabPage3.Margin = new Padding(4, 5, 4, 5);
             tabPage3.Name = "tabPage3";
@@ -229,36 +183,6 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Update";
             tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.BackColor = SystemColors.ButtonFace;
-            button2.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(94, 80);
-            button2.Name = "button2";
-            button2.Size = new Size(106, 30);
-            button2.TabIndex = 6;
-            button2.Text = "Update";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
-            // 
-            // updateBox
-            // 
-            updateBox.Location = new Point(94, 42);
-            updateBox.Multiline = true;
-            updateBox.Name = "updateBox";
-            updateBox.Size = new Size(276, 32);
-            updateBox.TabIndex = 5;
-            updateBox.TextChanged += textBox3_TextChanged;
-            // 
-            // label3
-            // 
-            label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(22, 42);
-            label3.Name = "label3";
-            label3.Size = new Size(56, 32);
-            label3.TabIndex = 4;
-            label3.Text = "Enter";
             // 
             // tabPage4
             // 
@@ -300,10 +224,6 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
-            tabPage2.ResumeLayout(false);
-            tabPage2.PerformLayout();
-            tabPage3.ResumeLayout(false);
-            tabPage3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -322,11 +242,5 @@
         private TabPage tabPage5;
         private TextBox textBoxInput;
         private TextBox MeaningBox;
-        private TextBox deleteBox;
-        private Button DeleteBtn;
-        private Label label1;
-        private Button button2;
-        private TextBox updateBox;
-        private Label label3;
     }
 }

@@ -68,7 +68,7 @@ namespace Dictionary
 
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void Button1_Click_1(object sender, EventArgs e)
         {
             // Save the input from the TextBox
             string userInput = deleteBox.Text;
