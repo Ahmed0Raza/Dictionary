@@ -2,7 +2,8 @@ namespace Dictionary
 {
     public partial class Form1 : Form
     {
-        Trie dictionary;
+        Trie dictionary = new Trie();
+        //abcdeefghkdf
         public Form1()
         {
 
@@ -11,11 +12,10 @@ namespace Dictionary
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dictionary = new Trie();
-
             // Load data from file into the Trie
             dictionary.Load("dictionary.txt");
-            textBoxLoad.Text = dictionary.Search("ahmed").ToString();
+            textBoxLoad.Text = "Dictionary loaded successfully!";
+
         }
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
