@@ -41,7 +41,8 @@ namespace Dictionary
 
         private void textBoxLoad_TextChanged(object sender, EventArgs e)
         {
-
+            string ahmedhumein;
+            //alilora
         }
     }
 }
