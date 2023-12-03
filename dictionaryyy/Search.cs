@@ -151,8 +151,56 @@ namespace Dictionary
 
         private void Search_Load(object sender, EventArgs e)
         {
+            newWord.Enabled = false;
+            addMeaning.Enabled = false;
+            addMeaningBtn.Enabled = false;
             toUpdateWord.Enabled = false;
             updatedMeaning.Enabled = false;
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+            string toAdd = addBox.Text;
+            string meaning = null;
+
+            if (passedDictionary.Search(toAdd, ref meaning))
+            {
+                MessageBox.Show("Word is already saved!");
+                newWord.Enabled = false;
+                addMeaning.Enabled = false;
+                addMeaningBtn.Enabled = false;
+            }
+            else
+            {
+                if (toAdd.Length > 0)
+                {
+                    newWord.Enabled = true;
+                    addMeaning.Enabled = true;
+                    addMeaningBtn.Enabled = true;
+                    newWord.Text = toAdd;
+                    addBox.Clear();
+
+                }
+
+            }
+        }
+
+        private void addMeaningBtn_Click(object sender, EventArgs e)
+        {
+            string Mean = addMeaning.Text;
+            string wordToAdd = newWord.Text;
+            passedDictionary.Insert(wordToAdd, Mean);
+            newWord.Enabled = false;
+            addMeaning.Enabled = false;
+            addMeaningBtn.Enabled = false;
+            newWord.Clear();
+            addMeaning.Clear();
+            MessageBox.Show("Inserted Successfully!");
         }
     }
 }
