@@ -52,11 +52,7 @@ namespace Dictionary
 
         }
 
-        private void textBoxInput_TextChanged(object sender, EventArgs e)
-        {
-            string word = textBoxInput.Text;
-            string meaning = string.Empty;
-        }
+       
 
         private void MeaningBox_TextChanged(object sender, EventArgs e)
         {

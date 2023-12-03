@@ -35,12 +35,11 @@
             button6 = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            textBoxInput = new TextBox();
+            MeaningBox = new TextBox();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
-            MeaningBox = new TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             SuspendLayout();
@@ -128,7 +127,6 @@
             // tabPage1
             // 
             tabPage1.Controls.Add(MeaningBox);
-            tabPage1.Controls.Add(textBoxInput);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -138,13 +136,13 @@
             tabPage1.UseVisualStyleBackColor = true;
             tabPage1.Click += tabPage1_Click;
             // 
-            // textBoxInput
+            // MeaningBox
             // 
-            textBoxInput.Location = new Point(37, 19);
-            textBoxInput.Name = "textBoxInput";
-            textBoxInput.Size = new Size(100, 23);
-            textBoxInput.TabIndex = 7;
-            textBoxInput.TextChanged += textBoxInput_TextChanged;
+            MeaningBox.Location = new Point(37, 74);
+            MeaningBox.Name = "MeaningBox";
+            MeaningBox.Size = new Size(100, 23);
+            MeaningBox.TabIndex = 8;
+            MeaningBox.TextChanged += MeaningBox_TextChanged;
             // 
             // tabPage2
             // 
@@ -183,14 +181,6 @@
             tabPage5.Text = "Add Word";
             tabPage5.UseVisualStyleBackColor = true;
             // 
-            // MeaningBox
-            // 
-            MeaningBox.Location = new Point(37, 59);
-            MeaningBox.Name = "MeaningBox";
-            MeaningBox.Size = new Size(100, 23);
-            MeaningBox.TabIndex = 8;
-            MeaningBox.TextChanged += MeaningBox_TextChanged;
-            // 
             // Search
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -225,7 +215,6 @@
         private TabPage tabPage3;
         private TabPage tabPage4;
         private TabPage tabPage5;
-        private TextBox textBoxInput;
         private TextBox MeaningBox;
     }
 }
