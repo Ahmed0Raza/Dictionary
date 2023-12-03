@@ -3,7 +3,7 @@ namespace Dictionary
     public partial class Form1 : Form
     {
         Trie dictionary = new Trie();
-        //abcd
+        //abcde
         public Form1()
         {
 
