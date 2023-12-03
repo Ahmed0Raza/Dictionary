@@ -12,7 +12,7 @@ using static System.Windows.Forms.DataFormats;
 
 namespace Dictionary
 {
-    
+
     public partial class Search : Form
     {
         protected static Trie passedDictionary;
@@ -52,11 +52,35 @@ namespace Dictionary
 
         }
 
-       
+
 
         private void MeaningBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+                wordBox.Text =  string.Empty;
+                meaningBox.Text = string.Empty;
+
+                string word;
+                string meaning;
+                word = SearchBox.Text;
+                meaning = null;
+                if (passedDictionary.Search(word, ref meaning))
+                {
+                    SearchBox.Text = string.Empty;
+                    wordBox.Text = word;
+                    meaningBox.Text = meaning;
+
+                }
+                else
+                {
+                SearchBox.Text = string.Empty;
+                }
+            
+           
         }
     }
 }
