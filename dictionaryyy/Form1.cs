@@ -44,5 +44,10 @@ namespace Dictionary
             string ahmedhumein;
             //alilora
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
