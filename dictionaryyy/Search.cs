@@ -202,5 +202,11 @@ namespace Dictionary
             addMeaning.Clear();
             MessageBox.Show("Inserted Successfully!");
         }
+
+        private void Search_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //save to file
+            passedDictionary.Save("dictionary.txt");
+        }
     }
 }

@@ -1,6 +1,8 @@
+using System.Collections.Generic;
+
 namespace Dictionary
 {
-    
+
     //public class TrieNode
     //{
     //    public Dictionary<char, TrieNode> Children { get; set; }
@@ -66,235 +68,213 @@ namespace Dictionary
     //        meaning = string.Empty;
     //        return false; // Prefix of another word
     //    }
-    class Map<TKey, TValue>
+    public class TrieNode
     {
-        private class Node
-        {
-            public TKey Key { get; set; }
-            public TValue Value { get; set; }
-            public Node Left { get; set; }
-            public Node Right { get; set; }
-
-            public Node(TKey key, TValue value)
-            {
-                Key = key;
-                Value = value;
-                Left = null;
-                Right = null;
-            }
-        }
-
-        private Node root;
-
-        private Node Insert(Node node, TKey key, TValue value)
-        {
-            if (node == null)
-            {
-                return new Node(key, value);
-            }
-
-            if (Comparer<TKey>.Default.Compare(key, node.Key) < 0)
-            {
-                node.Left = Insert(node.Left, key, value);
-            }
-            else if (Comparer<TKey>.Default.Compare(key, node.Key) > 0)
-            {
-                node.Right = Insert(node.Right, key, value);
-            }
-            else
-            {
-                // Key already exists, update the value
-                node.Value = value;
-            }
-
-            return node;
-        }
-
-        private Node Find(Node node, TKey key)
-        {
-            if (node == null || Comparer<TKey>.Default.Compare(key, node.Key) == 0)
-            {
-                return node;
-            }
-
-            if (Comparer<TKey>.Default.Compare(key, node.Key) < 0)
-            {
-                return Find(node.Left, key);
-            }
-            else
-            {
-                return Find(node.Right, key);
-            }
-        }
-
-        private void Print(Node node)
-        {
-            if (node != null)
-            {
-                Print(node.Left);
-                Console.WriteLine($"Key: {node.Key}, Value: {node.Value}");
-                Print(node.Right);
-            }
-        }
-
-        public void Insert(TKey key, TValue value)
-        {
-            root = Insert(root, key, value);
-        }
-
-        public bool Find(TKey key, out TValue value)
-        {
-            Node result = Find(root, key);
-            if (result != null)
-            {
-                value = result.Value;
-                return true;
-            }
-            value = default(TValue);
-            return false;
-        }
-
-        public void Print()
-        {
-            Print(root);
-        }
-    }
-
-    class TrieNode
-    {
-        public Dictionary<char, TrieNode> Children { get; set; }
-        public bool IsEndOfWord { get; set; }
-
         public string Meaning { get; set; }
-
+        public bool IsEndOfWord { get; set; }
+        public string FullWord { get; set; }
+        public TrieNode[] children { get; set; }
         public TrieNode()
         {
-            Children = new Dictionary<char, TrieNode>();
+            children = new TrieNode[26];
             IsEndOfWord = false;
-            Meaning = null;
+            FullWord = string.Empty;
         }
     }
-
     public class Trie
     {
         private TrieNode root;
-
         public Trie()
         {
             root = new TrieNode();
         }
-
         public void Insert(string word, string meaning)
         {
-            TrieNode node = root;
-            TrieNode outNode = null;
-
+            TrieNode current = root;
             foreach (char ch in word)
             {
-                if (!node.Children.TryGetValue(ch, out outNode))
+                if (ch > 'z' || ch < 'a')
                 {
-                    node.Children[ch] = new TrieNode();
+                    continue;
                 }
-
-                node = node.Children[ch];
+                if (current.children[ch - 'a'] == null)
+                {
+                    current.children[ch - 'a'] = new TrieNode();
+                }
+                current = current.children[ch - 'a'];
             }
-
-            node.IsEndOfWord = true;
-            node.Meaning = meaning;
+            current.IsEndOfWord = true;
+            current.Meaning = meaning;
+            current.FullWord = word;
         }
-
         public bool Search(string word, ref string meaning)
         {
-            TrieNode outNode = null;
-            TrieNode node = root;
-
+            TrieNode current = root;
             foreach (char ch in word)
             {
-                if (!node.Children.TryGetValue(ch, out outNode))
+                if (current.children[ch - 'a'] == null)
                 {
+                    meaning = string.Empty;
                     return false;
                 }
-
-                node = outNode;
+                current = current.children[ch - 'a'];
             }
-
-            if (node.IsEndOfWord)
+            if (current.IsEndOfWord)
             {
-                meaning = node.Meaning;
+                meaning = current.Meaning;
                 return true;
             }
-
+            meaning = string.Empty;
             return false;
         }
         public bool Delete(string word)
         {
-            TrieNode node = root;
-            TrieNode outNode = null;
-
-            foreach (char ch in word)
-            {
-                if (!node.Children.TryGetValue(ch, out outNode))
-                {
-                    // Word not found in the Trie, nothing to delete
-                    return false;
-                }
-
-                node = outNode;
-            }
-
-            // If the word is present in the Trie, mark it as not the end of the word and clear the meaning
-            if (node.IsEndOfWord)
-            {
-                node.IsEndOfWord = false;
-                node.Meaning = null;
-            }
-            return true;
+            return Delete(root, word, 0);
         }
-
-
-        public bool StartsWith(string prefix)
+        private bool Delete(TrieNode current, string word, int index)
         {
-            TrieNode node = root;
-            TrieNode outNode = null;
-
-            foreach (char ch in prefix)
+            if (index == word.Length)
             {
-                if (!node.Children.TryGetValue(ch, out outNode))
+                if (!current.IsEndOfWord)
                 {
                     return false;
                 }
-
-                node = outNode;
+                current.IsEndOfWord = false;
+                return current.children == null;
             }
-
-            return true;
+            if (current.children[word[index] - 'a'] == null)
+            {
+                return false;
+            }
+            bool shouldDeleteCurrentNode = Delete(current.children[word[index] - 'a'], word, index + 1) && !current.IsEndOfWord;
+            if (shouldDeleteCurrentNode)
+            {
+                current.children[word[index] - 'a'] = null;
+                return current.children == null;
+            }
+            return false;
         }
 
         public void Load(string filename)
         {
             try
             {
-                using (StreamReader file = new StreamReader(filename))
+
+                string filePath = "dictionary.txt";
+
+                // Check if the file exists
+                if (File.Exists(filePath))
                 {
-                    while (!file.EndOfStream)
+                    // Use StreamReader to read from the file
+                    using (StreamReader reader = new StreamReader(filePath))
                     {
-                        string line = file.ReadLine();
-                        string[] parts = line.Split(' ');
-                        string word = parts[0];
-                        string meaning = parts[1];
+                        // Read the contents of the file line by line
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            // Split each line into words                         
 
-                        // Remove any punctuation or special characters from the word
-                        word = new string(word.ToCharArray().Where(c => Char.IsLetter(c) || Char.IsWhiteSpace(c)).ToArray());
+                            string[] words = line.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
 
-                        Insert(word, meaning);
+                            if (words.Length > 1)
+                                Insert(words[0], words[1]);
+
+                        }
                     }
                 }
+                else
+                    throw new FileNotFoundException("File not found: " + filePath);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error reading file: " + ex.Message);
                 Console.WriteLine("Error reading file: " + ex.Message);
             }
+        }
+        //this function traverse the whole trie tree and load the word to file
+        public void writeToFile(TrieNode root, string word, StreamWriter sw)
+        {
+            if (root == null)
+                return;
+            if (root.IsEndOfWord)
+            {
+                sw.WriteLine(word + " " + root.Meaning);
+            }
+            for (int i = 0; i < 26; i++)
+            {
+                if (root.children[i] != null)
+                {
+                    writeToFile(root.children[i], word + (char)(i + 'a'), sw);
+                }
+            }
+        }
+        public void Save(string filename)
+        {
+            try
+            {
+                string filePath = "dictionary.txt";
+                // Check if the file exists
+                if (File.Exists(filePath))
+                {
+                    // Use StreamWriter to write to the file
+                    using (StreamWriter writer = new StreamWriter(filePath))
+                    {
+                        // Write each word to the file
+                        writeToFile(root, "", writer);
+                    }
+                }
+                else
+                    throw new FileNotFoundException("File not found: " + filePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error writing file: " + ex.Message);
+                Console.WriteLine("Error writing file: " + ex.Message);
+            }
+        }
+        //this function will return the list of 10 word that have the same prefix
+        public List<string> AutoComplete(string prefix)
+        {
+            List<string> list = new List<string>();
+            TrieNode current = root;
+            foreach (char ch in prefix)
+            {
+                if (current.children[ch - 'a'] == null)
+                {
+                    return list;
+                }
+                current = current.children[ch - 'a'];
+            }
+            if (current.IsEndOfWord)
+            {
+                list.Add(current.FullWord);
+            }
+            for (int i = 0; i < 26; i++)
+            {
+                if (current.children[i] != null)
+                {
+                    list.AddRange(AutoComplete(current.children[i], prefix + (char)(i + 'a')));
+                }
+            }
+            return list;
+        }
+        public List<string> AutoComplete(TrieNode root, string prefix)
+        {
+            List<string> list = new List<string>();
+            if (root == null)
+                return list;
+            if (root.IsEndOfWord)
+            {
+                list.Add(prefix);
+            }
+            for (int i = 0; i < 26; i++)
+            {
+                if (root.children[i] != null)
+                {
+                    list.AddRange(AutoComplete(root.children[i], prefix + (char)(i + 'a')));
+                }
+            }
+            return list;
         }
     }
 

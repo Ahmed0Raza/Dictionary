@@ -480,6 +480,7 @@
             Name = "Search";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Search";
+            FormClosing += Search_FormClosing;
             Load += Search_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
