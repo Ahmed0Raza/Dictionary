@@ -56,6 +56,9 @@
             updateBox = new TextBox();
             label5 = new Label();
             tabPage4 = new TabPage();
+            dataGridView1 = new DataGridView();
+            sugBtn = new Button();
+            sugTxtBox = new TextBox();
             tabPage5 = new TabPage();
             addMeaningBtn = new Button();
             addBtn = new Button();
@@ -69,6 +72,8 @@
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
+            tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabPage5.SuspendLayout();
             SuspendLayout();
             // 
@@ -146,10 +151,11 @@
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
-            tabControl1.Location = new Point(12, 120);
+            tabControl1.Dock = DockStyle.Bottom;
+            tabControl1.Location = new Point(0, 132);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(452, 164);
+            tabControl1.Size = new Size(476, 212);
             tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -164,7 +170,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(444, 136);
+            tabPage1.Size = new Size(468, 184);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Search";
             tabPage1.UseVisualStyleBackColor = true;
@@ -241,7 +247,7 @@
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(444, 136);
+            tabPage2.Size = new Size(468, 184);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Delete";
             tabPage2.UseVisualStyleBackColor = true;
@@ -292,7 +298,7 @@
             tabPage3.Controls.Add(label5);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(444, 136);
+            tabPage3.Size = new Size(468, 184);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Update";
             tabPage3.UseVisualStyleBackColor = true;
@@ -372,12 +378,41 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(dataGridView1);
+            tabPage4.Controls.Add(sugBtn);
+            tabPage4.Controls.Add(sugTxtBox);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(444, 136);
+            tabPage4.Size = new Size(468, 184);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Suggestions";
             tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.BackgroundColor = SystemColors.ActiveBorder;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(30, 60);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(388, 108);
+            dataGridView1.TabIndex = 2;
+            // 
+            // sugBtn
+            // 
+            sugBtn.Location = new Point(154, 21);
+            sugBtn.Name = "sugBtn";
+            sugBtn.Size = new Size(75, 23);
+            sugBtn.TabIndex = 1;
+            sugBtn.Text = "Enter";
+            sugBtn.UseVisualStyleBackColor = true;
+            sugBtn.Click += sugBtn_Click;
+            // 
+            // sugTxtBox
+            // 
+            sugTxtBox.Location = new Point(30, 21);
+            sugTxtBox.Name = "sugTxtBox";
+            sugTxtBox.Size = new Size(100, 23);
+            sugTxtBox.TabIndex = 0;
             // 
             // tabPage5
             // 
@@ -391,7 +426,7 @@
             tabPage5.Controls.Add(label8);
             tabPage5.Location = new Point(4, 24);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(444, 136);
+            tabPage5.Size = new Size(468, 184);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Add Word";
             tabPage5.UseVisualStyleBackColor = true;
@@ -469,13 +504,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(476, 288);
+            ClientSize = new Size(476, 344);
             Controls.Add(tabControl1);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(richTextBox2);
             Controls.Add(richTextBox1);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             Name = "Search";
             StartPosition = FormStartPosition.CenterScreen;
@@ -489,6 +525,9 @@
             tabPage2.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            tabPage4.ResumeLayout(false);
+            tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
             ResumeLayout(false);
@@ -533,5 +572,8 @@
         private TextBox newWord;
         private Button addMeaningBtn;
         private Button addBtn;
+        private TextBox sugTxtBox;
+        private Button sugBtn;
+        private DataGridView dataGridView1;
     }
 }

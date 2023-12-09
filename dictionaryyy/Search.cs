@@ -156,6 +156,7 @@ namespace Dictionary
             addMeaningBtn.Enabled = false;
             toUpdateWord.Enabled = false;
             updatedMeaning.Enabled = false;
+
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -207,6 +208,40 @@ namespace Dictionary
         {
             //save to file
             passedDictionary.Save("dictionary.txt");
+        }
+
+        private void sugBtn_Click(object sender, EventArgs e)
+        {
+            //dataGridView1.DataSource = passedDictionary.AutoComplete(sugTxtBox.Text.ToString());
+            //following function will return a data table based on the list to be displayed in the datagridview
+            DataTable dt = new DataTable();
+            dt.Columns.Add("#");
+            dt.Columns.Add("Words");
+            int count = 0;
+            foreach (string word in passedDictionary.AutoComplete(sugTxtBox.Text.ToString()))
+            {
+                count++;
+                if(count == 11)
+                {
+                    break;
+                }
+                dt.Rows.Add(count, word);
+               
+            }
+         
+            dataGridView1.DataSource = dt;
+            dataGridView1.AllowDrop = false;
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToOrderColumns = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Columns[0].Width = 30;
+
+            
+        
         }
     }
 }
