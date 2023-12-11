@@ -21,6 +21,7 @@ namespace Dictionary
         {
 
             InitializeComponent();
+
         }
         public Search(Trie dict)
         {
@@ -34,7 +35,12 @@ namespace Dictionary
             Form1 form1 = new Form1();
             form1.ShowDialog();
         }
-
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            passedDictionary.Save("dictionary.txt");
+            base.OnFormClosing(e);
+            Application.Exit();
+        }
         private void button6_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -98,15 +104,16 @@ namespace Dictionary
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             string toDelete = deleteBox.Text;
-            if (!passedDictionary.Delete(toDelete))
+            string meaning = null;
+            if (passedDictionary.Search(toDelete, ref meaning))
             {
-                MessageBox.Show("Word not found!");
+                passedDictionary.Delete(toDelete);
+                MessageBox.Show("Deleted Succesfully!");
             }
             else
             {
-                MessageBox.Show("Deleted Succesfully!");
+                MessageBox.Show("Word not found!");
             }
-            deleteBox.Text = string.Empty;
         }
 
         private void updateBtn_Click(object sender, EventArgs e)
@@ -119,9 +126,11 @@ namespace Dictionary
                 MessageBox.Show("Word not found!");
                 toUpdateWord.Enabled = false;
                 updatedMeaning.Enabled = false;
+                updatingBtn.Enabled = false;
             }
             else
             {
+                updatingBtn.Enabled = true;
                 toUpdateWord.Enabled = true;
                 updatedMeaning.Enabled = true;
                 updateBox.Text = string.Empty;
@@ -146,16 +155,21 @@ namespace Dictionary
             MessageBox.Show("Meaning Updated!");
             toUpdateWord.Text = string.Empty;
             updatedMeaning.Text = string.Empty;
+            toUpdateWord.Enabled = false;
+            updatedMeaning.Enabled = false;
+            updatingBtn.Enabled = false;
 
         }
 
         private void Search_Load(object sender, EventArgs e)
         {
+            passedDictionary.Save("dictionary.txt");
             newWord.Enabled = false;
             addMeaning.Enabled = false;
             addMeaningBtn.Enabled = false;
             toUpdateWord.Enabled = false;
             updatedMeaning.Enabled = false;
+            updatingBtn.Enabled = false;
 
         }
 
@@ -207,28 +221,34 @@ namespace Dictionary
         private void Search_FormClosing(object sender, FormClosingEventArgs e)
         {
             //save to file
-            passedDictionary.Save("dictionary.txt");
+
         }
 
         private void sugBtn_Click(object sender, EventArgs e)
         {
-            //dataGridView1.DataSource = passedDictionary.AutoComplete(sugTxtBox.Text.ToString());
-            //following function will return a data table based on the list to be displayed in the datagridview
+            if (string.IsNullOrWhiteSpace(sugTxtBox.Text))
+            {
+                // Display a message or handle the case when sugTxtBox is empty
+                MessageBox.Show("Please enter a prefix to get suggestions.");
+                return;
+            }
             DataTable dt = new DataTable();
             dt.Columns.Add("#");
             dt.Columns.Add("Words");
             int count = 0;
-            foreach (string word in passedDictionary.AutoComplete(sugTxtBox.Text.ToString()))
+             
+            StringLinkedList autoCompleteResults = passedDictionary.AutoComplete(sugTxtBox.Text.ToString());
+
+            foreach (string word in autoCompleteResults.ToArray())
             {
                 count++;
-                if(count == 11)
+                if (count == 11)
                 {
                     break;
                 }
                 dt.Rows.Add(count, word);
-               
             }
-         
+
             dataGridView1.DataSource = dt;
             dataGridView1.AllowDrop = false;
             dataGridView1.AllowUserToAddRows = false;
@@ -236,12 +256,23 @@ namespace Dictionary
             dataGridView1.AllowUserToOrderColumns = false;
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
-            
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ReadOnly = true;
             dataGridView1.Columns[0].Width = 30;
+            sugTxtBox.Text = string.Empty;
+        }
 
-            
-        
+
+
+
+        private void label4_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sugTxtBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

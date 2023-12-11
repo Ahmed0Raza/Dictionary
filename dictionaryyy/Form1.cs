@@ -9,13 +9,24 @@ namespace Dictionary
 
             InitializeComponent();
         }
-
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            dictionary.Save("dictionary.txt");
+            base.OnFormClosing(e);
+            Application.Exit();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             // Load data from file into the Trie
-            dictionary.Load("dictionary.txt");
-            textBoxLoad.Text = "Dictionary loaded successfully!";
-
+            if(dictionary.Load("dictionary.txt"))
+            {
+                textBoxLoad.Text = "Dictionary loaded successfully!";
+            }
+            else
+            {
+                textBoxLoad.Text = "Error: Dictionary not loaded !";
+            }
+            dictionary.Save("dictionary.txt");
         }
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
@@ -35,14 +46,13 @@ namespace Dictionary
         {
             this.Hide();
             About obj1;
-            obj1 = new About();
+            obj1 = new About(dictionary);
             obj1.ShowDialog();
         }
 
         private void textBoxLoad_TextChanged(object sender, EventArgs e)
         {
-            string ahmedhumein;
-            //alilora
+            
         }
 
         private void label1_Click(object sender, EventArgs e)

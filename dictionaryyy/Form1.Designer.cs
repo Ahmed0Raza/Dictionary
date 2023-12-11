@@ -107,21 +107,20 @@
             // textBoxLoad
             // 
             textBoxLoad.BackColor = SystemColors.ControlLightLight;
-            textBoxLoad.BorderStyle = BorderStyle.None;
             textBoxLoad.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBoxLoad.ForeColor = Color.DimGray;
-            textBoxLoad.Location = new Point(125, 155);
+            textBoxLoad.ForeColor = Color.Black;
+            textBoxLoad.Location = new Point(125, 170);
             textBoxLoad.Multiline = true;
             textBoxLoad.Name = "textBoxLoad";
-            textBoxLoad.Size = new Size(221, 17);
+            textBoxLoad.Size = new Size(221, 19);
             textBoxLoad.TabIndex = 5;
             textBoxLoad.TextChanged += textBoxLoad_TextChanged;
             // 
             // label1
             // 
-            label1.Font = new Font("Trebuchet MS", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(64, 64, 64);
-            label1.Location = new Point(125, 139);
+            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(125, 153);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(55, 14);
@@ -145,6 +144,7 @@
             MaximizeBox = false;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
+            Text = "Home";
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();

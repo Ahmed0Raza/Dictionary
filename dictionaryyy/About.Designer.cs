@@ -125,7 +125,7 @@
             Controls.Add(btn5);
             Controls.Add(btn4);
             Controls.Add(btn3);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             Name = "About";
             StartPosition = FormStartPosition.CenterScreen;

@@ -10,10 +10,17 @@ using System.Windows.Forms;
 
 namespace Dictionary
 {
+   
     public partial class About : Form
     {
+        protected static Trie passedAboutDict=new Trie();
         public About()
         {
+            InitializeComponent();
+        }
+        public  About(Trie dict)
+        {
+            passedAboutDict = dict;
             InitializeComponent();
         }
 
@@ -21,7 +28,12 @@ namespace Dictionary
         {
 
         }
-
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            passedAboutDict.Save("dictionary.txt");
+            base.OnFormClosing(e);
+            Application.Exit();
+        }
         private void btn3_Click(object sender, EventArgs e)
         {
             this.Hide();

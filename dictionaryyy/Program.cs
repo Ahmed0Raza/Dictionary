@@ -1,73 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Dictionary
 {
 
-    //public class TrieNode
-    //{
-    //    public Dictionary<char, TrieNode> Children { get; set; }
-    //    public string Meaning { get; set; }
-    //    public string FullWord { get; set; }
-    //    public bool IsEndOfWord { get; set; }
-
-    //    public TrieNode()
-    //    {
-    //        Children = new Dictionary<char, TrieNode>();
-    //        IsEndOfWord = false;
-    //    }
-    //}
-
-    //public class Trie
-    //{
-    //    private TrieNode root;
-
-    //    public Trie()
-    //    {
-    //        root = new TrieNode();
-    //    }
-
-    //    public void Insert(string word, string meaning)
-    //    {
-    //        TrieNode current = root;
-
-    //        foreach (char ch in word)
-    //        {
-    //            if (!current.Children.ContainsKey(ch))
-    //            {
-    //                current.Children[ch] = new TrieNode();
-    //            }
-    //            current = current.Children[ch];
-    //        }
-
-    //        current.IsEndOfWord = true;
-    //        current.Meaning = meaning;
-    //        current.FullWord = word; // Set the full word when IsEndOfWord is true
-    //    }
-
-    //    public bool Search(string word, out string meaning)
-    //    {
-    //        TrieNode current = root;
-
-    //        foreach (char ch in word)
-    //        {
-    //            if (!current.Children.TryGetValue(ch, out current))
-    //            {
-    //                meaning = string.Empty;
-    //                return false; // Word not found
-    //            }
-    //        }
-
-    //        if (current.IsEndOfWord)
-    //        {
-    //            meaning = current.Meaning;
-
-    //           // Console.WriteLine("Full word: " + current.FullWord); // Access the full word
-    //            return true; // Word found
-    //        }
-
-    //        meaning = string.Empty;
-    //        return false; // Prefix of another word
-    //    }
     public class TrieNode
     {
         public string Meaning { get; set; }
@@ -127,35 +63,30 @@ namespace Dictionary
             meaning = string.Empty;
             return false;
         }
-        public bool Delete(string word)
+        public void Delete(string word)
         {
-            return Delete(root, word, 0);
+            Delete(root, word, 0);
         }
-        private bool Delete(TrieNode current, string word, int index)
+
+        private void Delete(TrieNode current, string word, int index)
         {
             if (index == word.Length)
             {
-                if (!current.IsEndOfWord)
-                {
-                    return false;
-                }
                 current.IsEndOfWord = false;
-                return current.children == null;
+                return;
             }
-            if (current.children[word[index] - 'a'] == null)
+
+            Delete(current.children[word[index] - 'a'], word, index + 1);
+
+            // If this is a leaf node (no children) and not the end of another word, we can safely remove it.
+            if (current.children.All(child => child == null) && !current.IsEndOfWord)
             {
-                return false;
+                current.children = null;
             }
-            bool shouldDeleteCurrentNode = Delete(current.children[word[index] - 'a'], word, index + 1) && !current.IsEndOfWord;
-            if (shouldDeleteCurrentNode)
-            {
-                current.children[word[index] - 'a'] = null;
-                return current.children == null;
-            }
-            return false;
         }
 
-        public void Load(string filename)
+
+        public bool Load(string filename)
         {
             try
             {
@@ -181,6 +112,7 @@ namespace Dictionary
 
                         }
                     }
+                    return true;
                 }
                 else
                     throw new FileNotFoundException("File not found: " + filePath);
@@ -189,6 +121,7 @@ namespace Dictionary
             {
                 MessageBox.Show("Error reading file: " + ex.Message);
                 Console.WriteLine("Error reading file: " + ex.Message);
+                return false;
             }
         }
         //this function traverse the whole trie tree and load the word to file
@@ -208,6 +141,46 @@ namespace Dictionary
                 }
             }
         }
+
+        public StringLinkedList AutoComplete(string prefix)
+        {
+            StringLinkedList list = new StringLinkedList();
+            TrieNode current = root;
+
+            foreach (char ch in prefix)
+            {
+                if (current.children[ch - 'a'] == null)
+                {
+                    return list;
+                }
+                current = current.children[ch - 'a'];
+            }
+
+            AutoCompleteHelper(current, prefix, list);
+            
+            return list;
+        }
+
+        private void AutoCompleteHelper(TrieNode node, string currentPrefix, StringLinkedList list)
+        {
+            if (node == null)
+                return;
+
+            if (node.IsEndOfWord)
+            {
+                list.AddSorted(currentPrefix);
+            }
+            for (int i = 0; i < 26; i++)
+            {
+                if (node.children[i] != null)
+                {
+                    char nextChar = (char)('a' + i);
+                    AutoCompleteHelper(node.children[i], currentPrefix + nextChar, list);
+                }
+            }
+        }
+
+
         public void Save(string filename)
         {
             try
@@ -232,55 +205,100 @@ namespace Dictionary
                 Console.WriteLine("Error writing file: " + ex.Message);
             }
         }
-        //this function will return the list of 10 word that have the same prefix
-        public List<string> AutoComplete(string prefix)
-        {
-            List<string> list = new List<string>();
-            TrieNode current = root;
-            foreach (char ch in prefix)
-            {
-                if (current.children[ch - 'a'] == null)
-                {
-                    return list;
-                }
-                current = current.children[ch - 'a'];
-            }
-            if (current.IsEndOfWord)
-            {
-                list.Add(current.FullWord);
-            }
-            for (int i = 0; i < 26; i++)
-            {
-                if (current.children[i] != null)
-                {
-                    list.AddRange(AutoComplete(current.children[i], prefix + (char)(i + 'a')));
-                }
-            }
-            return list;
-        }
-        public List<string> AutoComplete(TrieNode root, string prefix)
-        {
-            List<string> list = new List<string>();
-            if (root == null)
-                return list;
-            if (root.IsEndOfWord)
-            {
-                list.Add(prefix);
-            }
-            for (int i = 0; i < 26; i++)
-            {
-                if (root.children[i] != null)
-                {
-                    list.AddRange(AutoComplete(root.children[i], prefix + (char)(i + 'a')));
-                }
-            }
-            return list;
-        }
+        //this function will return the list of 10 word that have the same prefi
     }
 
+    public class StringLinkedList
+    {
+        public class Node
+        {
+            public string Value { get; set; }
+            public Node Next { get; set; }
+
+            public Node(string val)
+            {
+                Value = val;
+                Next = null;
+            }
+        }
+
+        private Node head;
+
+        public StringLinkedList()
+        {
+            head = null;
+        }
+
+
+        public void AddSorted(string value)
+        {
+            Node newNode = new Node(value);
+
+            if (head == null || string.Compare(value, head.Value, StringComparison.OrdinalIgnoreCase) < 0)
+            {
+                newNode.Next = head;
+                head = newNode;
+                return;
+            }
+
+            Node current = head;
+
+            while (current.Next != null && string.Compare(value, current.Next.Value, StringComparison.OrdinalIgnoreCase) > 0)
+            {
+                current = current.Next;
+            }
+
+            newNode.Next = current.Next;
+            current.Next = newNode;
+        }
+
+        public string[] ToArray()
+        {
+            int size = Count();
+            string[] result = new string[size];
+
+            Node current = head;
+            int index = 0;
+
+            while (current != null)
+            {
+                result[index++] = current.Value;
+                current = current.Next;
+            }
+
+            return result;
+        }
+
+        public int Count()
+        {
+            int count = 0;
+            Node current = head;
+
+            while (current != null)
+            {
+                count++;
+                current = current.Next;
+            }
+
+            return count;
+        }
+        ~StringLinkedList()
+        {
+            Node current = head;
+            while (current != null)
+            {
+                Node next = current.Next;
+                current = null; // Release the reference to the current node
+                current = next;
+            }
+            head = null;
+
+        }
+
+    }
     internal static class Program
     {
-        /// <summary>
+        /// <summary/>
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
@@ -295,3 +313,5 @@ namespace Dictionary
         }
     }
 }
+
+    

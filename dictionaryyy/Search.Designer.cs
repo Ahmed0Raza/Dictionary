@@ -43,9 +43,9 @@
             SearchBtn = new Button();
             SearchBox = new TextBox();
             tabPage2 = new TabPage();
+            label4 = new Label();
             deleteBtn = new Button();
             deleteBox = new TextBox();
-            label4 = new Label();
             tabPage3 = new TabPage();
             updatingBtn = new Button();
             updatedMeaning = new TextBox();
@@ -56,6 +56,7 @@
             updateBox = new TextBox();
             label5 = new Label();
             tabPage4 = new TabPage();
+            label11 = new Label();
             dataGridView1 = new DataGridView();
             sugBtn = new Button();
             sugTxtBox = new TextBox();
@@ -152,10 +153,10 @@
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
             tabControl1.Dock = DockStyle.Bottom;
-            tabControl1.Location = new Point(0, 132);
+            tabControl1.Location = new Point(0, 120);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(476, 212);
+            tabControl1.Size = new Size(476, 168);
             tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -170,7 +171,7 @@
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(468, 184);
+            tabPage1.Size = new Size(468, 140);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Search";
             tabPage1.UseVisualStyleBackColor = true;
@@ -241,21 +242,32 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(label4);
             tabPage2.Controls.Add(deleteBtn);
             tabPage2.Controls.Add(deleteBox);
-            tabPage2.Controls.Add(label4);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(468, 184);
+            tabPage2.Size = new Size(468, 140);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Delete";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(17, 26);
+            label4.Name = "label4";
+            label4.Size = new Size(37, 15);
+            label4.TabIndex = 3;
+            label4.Text = "Enter";
+            label4.Click += label4_Click_1;
+            // 
             // deleteBtn
             // 
             deleteBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            deleteBtn.Location = new Point(69, 40);
+            deleteBtn.Location = new Point(78, 52);
             deleteBtn.Margin = new Padding(2);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(78, 23);
@@ -266,25 +278,13 @@
             // 
             // deleteBox
             // 
-            deleteBox.Location = new Point(69, 17);
+            deleteBox.Location = new Point(78, 23);
             deleteBox.Margin = new Padding(2);
             deleteBox.Multiline = true;
             deleteBox.Name = "deleteBox";
             deleteBox.Size = new Size(197, 20);
             deleteBox.TabIndex = 1;
             deleteBox.TextChanged += deleteBox_TextChanged;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(26, 17);
-            label4.Margin = new Padding(2, 0, 2, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(34, 15);
-            label4.TabIndex = 0;
-            label4.Text = "Enter";
-            label4.Click += label4_Click;
             // 
             // tabPage3
             // 
@@ -298,18 +298,19 @@
             tabPage3.Controls.Add(label5);
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(468, 184);
+            tabPage3.Size = new Size(468, 140);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Update";
             tabPage3.UseVisualStyleBackColor = true;
             // 
             // updatingBtn
             // 
+            updatingBtn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             updatingBtn.Location = new Point(277, 90);
             updatingBtn.Name = "updatingBtn";
             updatingBtn.Size = new Size(75, 23);
             updatingBtn.TabIndex = 7;
-            updatingBtn.Text = "Enter";
+            updatingBtn.Text = "Update";
             updatingBtn.UseVisualStyleBackColor = true;
             updatingBtn.Click += updatingBtn_Click;
             // 
@@ -355,7 +356,7 @@
             updateBtn.Name = "updateBtn";
             updateBtn.Size = new Size(75, 23);
             updateBtn.TabIndex = 2;
-            updateBtn.Text = "Update";
+            updateBtn.Text = "Enter";
             updateBtn.UseVisualStyleBackColor = true;
             updateBtn.Click += updateBtn_Click;
             // 
@@ -378,41 +379,55 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(label11);
             tabPage4.Controls.Add(dataGridView1);
             tabPage4.Controls.Add(sugBtn);
             tabPage4.Controls.Add(sugTxtBox);
+            tabPage4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(468, 184);
+            tabPage4.Size = new Size(468, 140);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Suggestions";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label11.Location = new Point(30, 18);
+            label11.Name = "label11";
+            label11.Size = new Size(37, 15);
+            label11.TabIndex = 3;
+            label11.Text = "Enter";
+            // 
             // dataGridView1
             // 
-            dataGridView1.BackgroundColor = SystemColors.ActiveBorder;
+            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(30, 60);
+            dataGridView1.Location = new Point(30, 43);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(388, 108);
+            dataGridView1.ReadOnly = true;
+            dataGridView1.Size = new Size(416, 89);
             dataGridView1.TabIndex = 2;
             // 
             // sugBtn
             // 
-            sugBtn.Location = new Point(154, 21);
+            sugBtn.Location = new Point(179, 14);
             sugBtn.Name = "sugBtn";
-            sugBtn.Size = new Size(75, 23);
+            sugBtn.Size = new Size(83, 23);
             sugBtn.TabIndex = 1;
-            sugBtn.Text = "Enter";
+            sugBtn.Text = "Suggestions";
             sugBtn.UseVisualStyleBackColor = true;
             sugBtn.Click += sugBtn_Click;
             // 
             // sugTxtBox
             // 
-            sugTxtBox.Location = new Point(30, 21);
+            sugTxtBox.Location = new Point(73, 14);
             sugTxtBox.Name = "sugTxtBox";
             sugTxtBox.Size = new Size(100, 23);
             sugTxtBox.TabIndex = 0;
+            sugTxtBox.TextChanged += sugTxtBox_TextChanged;
             // 
             // tabPage5
             // 
@@ -426,13 +441,14 @@
             tabPage5.Controls.Add(label8);
             tabPage5.Location = new Point(4, 24);
             tabPage5.Name = "tabPage5";
-            tabPage5.Size = new Size(468, 184);
+            tabPage5.Size = new Size(468, 140);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Add Word";
             tabPage5.UseVisualStyleBackColor = true;
             // 
             // addMeaningBtn
             // 
+            addMeaningBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             addMeaningBtn.Location = new Point(295, 80);
             addMeaningBtn.Name = "addMeaningBtn";
             addMeaningBtn.Size = new Size(75, 25);
@@ -443,6 +459,7 @@
             // 
             // addBtn
             // 
+            addBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             addBtn.Location = new Point(83, 50);
             addBtn.Name = "addBtn";
             addBtn.Size = new Size(75, 23);
@@ -476,27 +493,30 @@
             // label10
             // 
             label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.Location = new Point(245, 21);
             label10.Name = "label10";
-            label10.Size = new Size(36, 15);
+            label10.Size = new Size(38, 15);
             label10.TabIndex = 2;
             label10.Text = "Word";
             // 
             // label9
             // 
             label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.Location = new Point(235, 59);
             label9.Name = "label9";
-            label9.Size = new Size(54, 15);
+            label9.Size = new Size(55, 15);
             label9.TabIndex = 1;
             label9.Text = "Meaning";
             // 
             // label8
             // 
             label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.Location = new Point(39, 21);
             label8.Name = "label8";
-            label8.Size = new Size(36, 15);
+            label8.Size = new Size(38, 15);
             label8.TabIndex = 0;
             label8.Text = "Word";
             // 
@@ -504,7 +524,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(476, 344);
+            ClientSize = new Size(476, 288);
             Controls.Add(tabControl1);
             Controls.Add(button6);
             Controls.Add(button5);
@@ -554,7 +574,6 @@
         private Label label3;
         private TextBox wordBox;
         private TextBox deleteBox;
-        private Label label4;
         private Button deleteBtn;
         private Button updateBtn;
         private TextBox updateBox;
@@ -575,5 +594,7 @@
         private TextBox sugTxtBox;
         private Button sugBtn;
         private DataGridView dataGridView1;
+        private Label label11;
+        private Label label4;
     }
 }
