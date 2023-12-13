@@ -17,6 +17,7 @@ namespace Dictionary
             FullWord = string.Empty;
         }
     }
+
     public class Trie
     {
         private TrieNode root;
@@ -43,11 +44,21 @@ namespace Dictionary
             current.Meaning = meaning;
             current.FullWord = word;
         }
+        public bool HasCapitalLetter(string input)
+        {
+            // Convert the entire string to lowercase
+            string lowercaseInput = input.ToLower();
+
+            // Check if the original string contains any capital letters
+            return !input.Equals(lowercaseInput);
+        }
+
         public bool Search(string word, ref string meaning)
         {
             TrieNode current = root;
             foreach (char ch in word)
             {
+
                 if (current.children[ch - 'a'] == null)
                 {
                     meaning = string.Empty;
@@ -146,7 +157,10 @@ namespace Dictionary
         {
             StringLinkedList list = new StringLinkedList();
             TrieNode current = root;
-
+            if (HasCapitalLetter(prefix))
+            {
+                prefix= prefix.ToLower();
+            }
             foreach (char ch in prefix)
             {
                 if (current.children[ch - 'a'] == null)
@@ -157,7 +171,7 @@ namespace Dictionary
             }
 
             AutoCompleteHelper(current, prefix, list);
-            
+
             return list;
         }
 
@@ -177,8 +191,7 @@ namespace Dictionary
                     char nextChar = (char)('a' + i);
                     AutoCompleteHelper(node.children[i], currentPrefix + nextChar, list);
                 }
-            }
-        }
+            }        }
 
 
         public void Save(string filename)
@@ -206,7 +219,20 @@ namespace Dictionary
             }
         }
         //this function will return the list of 10 word that have the same prefi
+        public bool ContainsNonAlphabetic(string input)
+        {
+            foreach (char c in input)
+            {
+                if (!char.IsLetter(c))
+                {
+                    return true; // Input contains a non-alphabetic character
+                }
+            }
+            return false; // Input contains only alphabets
+        }
+
     }
+
 
     public class StringLinkedList
     {
@@ -296,6 +322,8 @@ namespace Dictionary
         }
 
     }
+
+
     internal static class Program
     {
         /// <summary/>
@@ -313,5 +341,3 @@ namespace Dictionary
         }
     }
 }
-
-    

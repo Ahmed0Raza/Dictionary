@@ -75,6 +75,17 @@ namespace Dictionary
             string meaning;
             word = SearchBox.Text;
             meaning = null;
+            if (passedDictionary.HasCapitalLetter(word))
+            {
+                word = word.ToLower();
+            }
+            if (passedDictionary.ContainsNonAlphabetic(word))
+            {
+                MessageBox.Show("Invalid input. Please enter a valid word.");
+                SearchBox.Text = string.Empty;
+                return;
+            }
+
             if (passedDictionary.Search(word, ref meaning))
             {
                 SearchBox.Text = string.Empty;
@@ -105,6 +116,16 @@ namespace Dictionary
         {
             string toDelete = deleteBox.Text;
             string meaning = null;
+            if (passedDictionary.HasCapitalLetter(toDelete))
+            {
+                toDelete = toDelete.ToLower();
+            }
+            if (passedDictionary.ContainsNonAlphabetic(toDelete))
+            {
+                MessageBox.Show("Invalid input. Please enter a valid word.");
+                SearchBox.Text = string.Empty;
+                return;
+            }
             if (passedDictionary.Search(toDelete, ref meaning))
             {
                 passedDictionary.Delete(toDelete);
@@ -120,6 +141,16 @@ namespace Dictionary
         {
             string word = updateBox.Text;
             string meaning = null;
+            if (passedDictionary.HasCapitalLetter(word))
+            {
+                word = word.ToLower();
+            }
+            if (passedDictionary.ContainsNonAlphabetic(word))
+            {
+                MessageBox.Show("Invalid input. Please enter a valid word.");
+                SearchBox.Text = string.Empty;
+                return;
+            }
             if (!passedDictionary.Search(word, ref meaning))
             {
                 updateBox.Text = string.Empty;
@@ -151,6 +182,16 @@ namespace Dictionary
             string word = toUpdateWord.Text;
             string meaning;
             meaning = updatedMeaning.Text;
+            if (passedDictionary.HasCapitalLetter(meaning))
+            {
+                meaning = meaning.ToLower();
+            }
+            if (passedDictionary.ContainsNonAlphabetic(meaning))
+            {
+                MessageBox.Show("Invalid input. Please enter a valid word.");
+                SearchBox.Text = string.Empty;
+                return;
+            }
             passedDictionary.Insert(word, meaning);
             MessageBox.Show("Meaning Updated!");
             toUpdateWord.Text = string.Empty;
@@ -182,6 +223,16 @@ namespace Dictionary
         {
             string toAdd = addBox.Text;
             string meaning = null;
+            if (passedDictionary.HasCapitalLetter(toAdd))
+            {
+                toAdd= toAdd.ToLower();
+            }
+            if (passedDictionary.ContainsNonAlphabetic(toAdd))
+            {
+                MessageBox.Show("Invalid input. Please enter a valid word.");
+                SearchBox.Text = string.Empty;
+                return;
+            }
 
             if (passedDictionary.Search(toAdd, ref meaning))
             {
@@ -209,6 +260,16 @@ namespace Dictionary
         {
             string Mean = addMeaning.Text;
             string wordToAdd = newWord.Text;
+            if (passedDictionary.HasCapitalLetter(Mean))
+            {
+                Mean = Mean.ToLower();
+            }
+            if (passedDictionary.ContainsNonAlphabetic(Mean))
+            {
+                MessageBox.Show("Invalid input. Please enter a valid word.");
+                SearchBox.Text = string.Empty;
+                return;
+            }
             passedDictionary.Insert(wordToAdd, Mean);
             newWord.Enabled = false;
             addMeaning.Enabled = false;
@@ -226,6 +287,17 @@ namespace Dictionary
 
         private void sugBtn_Click(object sender, EventArgs e)
         {
+            string check = sugTxtBox.Text;
+            if (passedDictionary.HasCapitalLetter(check))
+            {
+                check = check.ToLower();
+            }
+            if (passedDictionary.ContainsNonAlphabetic(check))
+            {
+                MessageBox.Show("Invalid input. Please enter a valid word.");
+                SearchBox.Text = string.Empty;
+                return;
+            }
             if (string.IsNullOrWhiteSpace(sugTxtBox.Text))
             {
                 // Display a message or handle the case when sugTxtBox is empty
@@ -236,7 +308,7 @@ namespace Dictionary
             dt.Columns.Add("#");
             dt.Columns.Add("Words");
             int count = 0;
-             
+
             StringLinkedList autoCompleteResults = passedDictionary.AutoComplete(sugTxtBox.Text.ToString());
 
             foreach (string word in autoCompleteResults.ToArray())
@@ -271,6 +343,11 @@ namespace Dictionary
         }
 
         private void sugTxtBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addBox_TextChanged(object sender, EventArgs e)
         {
 
         }

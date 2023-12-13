@@ -453,7 +453,7 @@
             addMeaningBtn.Name = "addMeaningBtn";
             addMeaningBtn.Size = new Size(75, 25);
             addMeaningBtn.TabIndex = 7;
-            addMeaningBtn.Text = "Enter";
+            addMeaningBtn.Text = "Add";
             addMeaningBtn.UseVisualStyleBackColor = true;
             addMeaningBtn.Click += addMeaningBtn_Click;
             // 
@@ -489,6 +489,7 @@
             addBox.Name = "addBox";
             addBox.Size = new Size(100, 23);
             addBox.TabIndex = 3;
+            addBox.TextChanged += addBox_TextChanged;
             // 
             // label10
             // 
