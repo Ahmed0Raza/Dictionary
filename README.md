@@ -1,2 +1,5 @@
 **Dictionary**
-Preview images
+
+Dictionary made using trie data structure
+
+Preview Images
